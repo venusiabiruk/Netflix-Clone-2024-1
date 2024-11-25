@@ -1,0 +1,91 @@
+
+.banner {
+    height: 100vh; 
+    color: white;
+    object-fit: contain;
+    margin: 0;
+    padding: 0;
+    position: relative; 
+    background-size: cover; 
+    background-position: top center; 
+    background-repeat: no-repeat; 
+}
+
+/* Banner Contents */
+.banner_contents {
+    position: absolute; 
+    bottom: 20%; 
+    left: 3%; 
+    width: 45%; 
+    z-index: 1; 
+}
+
+/* Title */
+.banner_title {
+    font-size: 4rem; 
+    font-weight: 800;
+    margin-bottom: 1.5rem; 
+    line-height: 1.2; 
+}
+
+
+.banner_button {
+    display: flex; 
+    gap: 1.5rem; 
+}
+
+/* Individual Buttons */
+.banner_button button {
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    font-size: 1.5rem; 
+    font-weight: 700;
+    border-radius: 0.3vw;
+    padding: 1rem 2.5rem; 
+    background-color: rgba(51, 51, 51, 0.8); 
+    transition: all 0.3s ease; 
+}
+
+/* Hover Effect for Buttons */
+.banner_button button:hover {
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+
+.play {
+    color: black;
+    background-color: white; 
+}
+
+/* Description */
+.banner_description {
+    font-size: 1.2rem; 
+    line-height: 1.4;
+    width: 70%;
+    margin-top: 1rem;
+    max-width: 400px; 
+    height: auto; 
+}
+
+
+.banner_fadeBottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25vh; 
+    background-image: linear-gradient(
+        180deg,
+        transparent,
+        rgba(37, 37, 37, 0.61),
+        #111
+    );
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
