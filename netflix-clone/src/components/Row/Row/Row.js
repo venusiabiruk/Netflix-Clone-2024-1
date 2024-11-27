@@ -12,12 +12,16 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
   useEffect(() => {
     (async () => {
       try {
-        console.log(fetchUrl);
         const request = await axios.get(fetchUrl);
-        console.log(request);
+        if (request.data.results.length === 0) {
+          console.warn("No movies found for this category:", fetchUrl);
+        }
         setMovies(request.data.results);
       } catch (error) {
-        console.log("error", error);
+        console.error("Error fetching movies:", error);
+        alert(
+          "An error occurred while loading movies. Please try again later."
+        );
       }
     })();
   }, [fetchUrl]);
@@ -28,11 +32,14 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     } else {
       movieTrailer(movie?.title || movie.name || movie?.original_name)
         .then((url) => {
-          console.log(url);
-          const urlParams = new URLSearchParams(new URL(url).search);
-          setTrailerUrl(urlParams.get("v")); // Set the YouTube video ID
+          if (url) {
+            const urlParams = new URLSearchParams(new URL(url).search);
+            setTrailerUrl(urlParams.get("v"));
+          } else {
+            alert("Trailer not found.");
+          }
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.error("Error fetching trailer:", error));
     }
   };
 
@@ -40,7 +47,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     height: "300",
     width: "100%",
     playerVars: {
-      autoplay: 1, // Autoplay the trailer
+      autoplay: 1,
     },
   };
 
@@ -51,16 +58,20 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
         {movies?.map((movie, index) => (
           <img
             key={index}
-            onClick={() => handleClick(movie)} // Enable click functionality
-            src={`${base_url}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
-            }`}
-            alt={movie.name}
+            onClick={() => handleClick(movie)}
+            src={
+              movie.poster_path || movie.backdrop_path
+                ? `${base_url}${
+                    isLargeRow ? movie.poster_path : movie.backdrop_path
+                  }`
+                : "https://via.placeholder.com/300x450?text=No+Image"
+            }
+            alt={movie.name || "Movie"}
+            aria-label={`Play trailer for ${movie.name || "this movie"}`}
             className={`row_poster ${isLargeRow ? "row_posterLarge" : ""}`}
           />
         ))}
       </div>
-      {/* Display trailer only when trailerUrl is set */}
       {trailerUrl && (
         <div style={{ padding: "40px" }}>
           <YouTube videoId={trailerUrl} opts={opts} />

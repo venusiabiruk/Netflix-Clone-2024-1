@@ -1,53 +1,58 @@
 .header_outer_container {
-  position: sticky;
-  top: 0;
-  justify-content: center;
-  align-items: center;
-  height: 10vh;
-  color: white;
-  transition: background-color 0.5s ease-in;
-  z-index: 1;
-  display: flex;
-  background-color: transparent;
+   position: sticky;
+   top: 0;
+   justify-content: center;
+   align-items: center;
+   height: 10vh;
+   color: white;
+   z-index: 1;
+   display: flex;
+   background-color: rgb(20, 20, 20); /* Set the background color here */
+   transition: background-color 0.5s ease-in; /* Optional smooth transition */
 }
 
 .nav_black {
-  background-color: rgb(20, 20, 20);
+   background-color: rgb(20, 20, 20);
 }
 
 .header_container {
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+   width: 90%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
 
 .header_left ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  gap: 15px; /* Space between list items */
+   list-style-type: none;
+   padding: 0;
+   display: flex;
+   gap: 15px; /* Space between list items */
 }
 
 .header_left li {
-  cursor: pointer;
-  text-transform: uppercase;
+   cursor: pointer;
+   text-transform: uppercase;
 }
 
 .header_right {
-  display: flex; /* Align icons horizontally */
-  justify-content: space-between; /* Distribute icons evenly */
-  align-items: center; /* Vertically center icons */
+   display: flex; /* Align icons horizontally */
+   justify-content: space-between; /* Distribute icons evenly */
+   align-items: center; /* Vertically center icons */
 }
 
 .header_right ul {
-  list-style: none;
-  display: flex;
-  padding: 0;
-  margin: 0;
+   list-style: none;
+   display: flex;
+   padding: 0;
+   margin: 0;
 }
 
 .header_right ul li {
-  margin-left: 20px; /* Space between icons */
-  cursor: pointer; /* Makes icons clickable */
+   margin-left: 20px; 
+   cursor: pointer; 
+}
+
+
+.header_outer_container.sticky {
+   background-color: rgb(20, 20, 20); /* Ensure background remains black when sticky */
 }
